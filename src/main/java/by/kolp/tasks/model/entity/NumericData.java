@@ -8,14 +8,14 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(schema = "numerical_data")
-public class NumericalData {
+@Table(schema = "numeric_data")
+public class NumericData {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany(mappedBy = "numericalData", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "numericData", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<NumericDataEntry> entriesList = new ArrayList<>();
 
     public void addEntry(String key, Integer value) {

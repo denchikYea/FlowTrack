@@ -2,20 +2,19 @@ package by.kolp.tasks.service;
 
 import by.kolp.tasks.model.dto.NumericDataEntryDTO;
 import by.kolp.tasks.model.entity.NumericDataEntry;
-import by.kolp.tasks.model.entity.NumericalData;
+import by.kolp.tasks.model.entity.NumericData;
 import by.kolp.tasks.repository.interfaces.NumericDataEntryRepository;
-import by.kolp.tasks.repository.interfaces.NumericalDataRepository;
+import by.kolp.tasks.repository.interfaces.NumericDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class CalculateService{
-
+public class CalculateService {
 
     @Autowired
-    private NumericalDataRepository numericalDataRepository;
+    private NumericDataRepository numericDataRepository;
 
     @Autowired
     private NumericDataEntryRepository numericDataEntryRepository;
@@ -23,19 +22,19 @@ public class CalculateService{
     public Integer sumAllValues(NumericDataEntryDTO data) {
 
         Integer sum = 0;
-        NumericalData newNumericaldata = new NumericalData();
-        newNumericaldata.addEntry(data.getKey(), data.getValue());
+        NumericData newNumericdata = new NumericData();
+        newNumericdata.addEntry(data.getKey(), data.getValue());
 
-        numericalDataRepository.save(newNumericaldata);
+        numericDataRepository.save(newNumericdata);
 
         List<NumericDataEntry> AllEntries = numericDataEntryRepository.findAll();
 
         sum = AllEntries.stream()
-                .mapToInt(e -> e.getValue())
+                .mapToInt(NumericDataEntry::getValue)
                 .sum();
 
         for (NumericDataEntry entry : AllEntries) {
-            if(entry != null) {
+            if (entry != null) {
                 sum += entry.getValue();
             }
         }

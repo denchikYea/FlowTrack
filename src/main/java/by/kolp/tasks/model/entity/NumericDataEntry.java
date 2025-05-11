@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-@Table(name = "numerical_data_entries")
+@Table(name = "numeric_data_entries")
 public class NumericDataEntry {
 
     @Id
@@ -18,13 +18,13 @@ public class NumericDataEntry {
     private Integer value;
 
     @ManyToOne
-    @JoinColumn(name = "numerical_data_id")
-    private NumericalData numericalData;
+    @JoinColumn(name = "numeric_data_id")
+    private NumericData numericData;
 
 
-    public NumericDataEntry(String key, Integer value, NumericalData numericalData) {
+    public NumericDataEntry(String key, Integer value, NumericData numericData) {
         this.key = key;
         this.value = value;
-        this.numericalData = numericalData;
+        this.numericData = numericData;
     }
 }

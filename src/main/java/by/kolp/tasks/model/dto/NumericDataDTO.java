@@ -9,7 +9,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class NumericalDataDTO {
+public class NumericDataDTO {
     private Long id;
-    private List<NumericalDataDTO> entries;
+    private List<NumericDataDTO> entries;
 }
