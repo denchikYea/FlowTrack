@@ -1,4 +1,4 @@
-package by.kolp.tasks.entity;
+package by.kolp.tasks.model.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

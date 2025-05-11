@@ -1,7 +1,8 @@
 package by.kolp.tasks.controller;
 
-import by.kolp.tasks.entity.NumericDataEntry;
+import by.kolp.tasks.model.dto.NumericDataEntryDTO;
 import by.kolp.tasks.service.CalculateService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+@Slf4j
 @Controller
 @RequestMapping("/calculator")
 public class CalculateServiceController {
@@ -17,23 +19,19 @@ public class CalculateServiceController {
     private CalculateService service;
 
 
-
     public String showForm(Model model) {
-        model.addAttribute("numericDataEntry", new NumericDataEntry());
+        model.addAttribute("numericDataEntry", new NumericDataEntryDTO());
         return "calculation"; //html
 
     }
 
 
     @PostMapping("/calculate")
-    public String calculate(@ModelAttribute("numericDataEntry") NumericDataEntry data, Model model) {
+    public String calculateAll(@ModelAttribute("numericDataEntry") NumericDataEntryDTO data, Model model ) {
 
-        String key = data.getKey();
-        Integer value = data.getValue();
-
-        //TODO
-
-        return null;
+        Integer result = service.sumAllValues(data);
+        model.addAttribute("result", result);
+        return "redirect:/results";
     }
 
 }
