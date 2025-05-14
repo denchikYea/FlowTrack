@@ -5,11 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
-import java.time.LocalDateTime;
 
 
 @Data
@@ -17,13 +14,13 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "users1",  uniqueConstraints = {
+@Table(name = "users", uniqueConstraints = {
         @UniqueConstraint(columnNames = "email")
-        })
+})
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @Column(nullable = false, unique = true, length = 40)
@@ -37,11 +34,12 @@ public class User {
     private String password;
 
 
-    @CreationTimestamp
-    @Column(nullable = false,name = "created_at", updatable = false)
+    @Builder.Default
+    @Column(nullable = false, name = "created_at", updatable = false)
     private Instant createdAt = Instant.now();
 
-    @UpdateTimestamp
+
+    @Builder.Default
     @Column(nullable = false, name = "updated_at")
     private Instant updatedAt = Instant.now();
 

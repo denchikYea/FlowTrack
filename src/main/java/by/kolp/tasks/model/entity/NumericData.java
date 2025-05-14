@@ -1,19 +1,22 @@
 package by.kolp.tasks.model.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@Table(schema = "numeric_data")
+@Table(name = "numeric_data")
 public class NumericData {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @OneToMany(mappedBy = "numericData", cascade = CascadeType.ALL, orphanRemoval = true)
