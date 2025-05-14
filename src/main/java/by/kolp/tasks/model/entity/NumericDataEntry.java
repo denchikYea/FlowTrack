@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.Instant;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -21,6 +23,8 @@ public class NumericDataEntry {
     @JoinColumn(name = "numeric_data_id")
     private NumericData numericData;
 
+
+    private Instant createdAt = Instant.now();
 
     public NumericDataEntry(String key, Integer value, NumericData numericData) {
         this.key = key;

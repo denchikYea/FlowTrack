@@ -3,6 +3,7 @@ package by.kolp.tasks.model.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +18,8 @@ public class NumericData {
 
     @OneToMany(mappedBy = "numericData", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<NumericDataEntry> entriesList = new ArrayList<>();
+
+    private Instant createdAt = Instant.now();
 
     public void addEntry(String key, Integer value) {
         entriesList.add(new NumericDataEntry(key, value, this));

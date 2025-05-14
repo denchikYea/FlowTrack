@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.time.Instant;
 
 @Data
 @AllArgsConstructor
@@ -23,5 +26,7 @@ public class Category {
     @Column(nullable = false,unique = true,length = 100)
     private String name;
 
+    @CreationTimestamp
+    private Instant createdAt = Instant.now();
 
 }

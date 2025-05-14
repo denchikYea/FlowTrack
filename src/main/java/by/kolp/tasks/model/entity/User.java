@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
 
 
@@ -38,11 +39,11 @@ public class User {
 
     @CreationTimestamp
     @Column(nullable = false,name = "created_at", updatable = false)
-    private LocalDateTime createdAt;
+    private Instant createdAt = Instant.now();
 
     @UpdateTimestamp
     @Column(nullable = false, name = "updated_at")
-    private LocalDateTime updatedAt;
+    private Instant updatedAt = Instant.now();
 
 
 }
