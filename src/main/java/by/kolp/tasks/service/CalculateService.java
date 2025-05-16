@@ -1,8 +1,8 @@
 package by.kolp.tasks.service;
 
 import by.kolp.tasks.model.dto.NumericDataEntryDTO;
-import by.kolp.tasks.model.entity.NumericDataEntry;
 import by.kolp.tasks.model.entity.NumericData;
+import by.kolp.tasks.model.entity.NumericDataEntry;
 import by.kolp.tasks.repository.interfaces.NumericDataEntryRepository;
 import by.kolp.tasks.repository.interfaces.NumericDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +22,10 @@ public class CalculateService {
     public Integer sumAllValues(NumericDataEntryDTO data) {
 
         Integer sum = 0;
-        NumericData newNumericdata = new NumericData();
-        newNumericdata.addEntry(data.getKey(), data.getValue());
+        NumericData numericData = new NumericData();
+        numericData.addEntry(data.key(), data.value());
 
-        numericDataRepository.save(newNumericdata);
+        numericDataRepository.save(numericData);
 
         List<NumericDataEntry> AllEntries = numericDataEntryRepository.findAll();
 
