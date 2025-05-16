@@ -9,9 +9,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
-@Controller
+@RestController
 @RequestMapping("/calculator")
 public class CalculateServiceController {
 
@@ -19,8 +20,11 @@ public class CalculateServiceController {
     private CalculateService service;
 
 
-    public String showForm(Model model) {
-        model.addAttribute("numericDataEntry", new NumericDataEntryDTO());
+    public String showForm(Model model, String key, Integer value) {
+        model.addAttribute("numericDataEntry", new NumericDataEntryDTO(key , value));
+
+        //doubtful
+        //TODO test form make edits
         return "calculation"; //html
 
     }

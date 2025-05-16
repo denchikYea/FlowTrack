@@ -22,10 +22,11 @@ public class CalculateService {
     public Integer sumAllValues(NumericDataEntryDTO data) {
 
         Integer sum = 0;
-        NumericData newNumericdata = new NumericData();
-        newNumericdata.addEntry(data.getKey(), data.getValue());
+        NumericData numericData = new NumericData();
+        NumericDataEntry newNumericdata = new NumericDataEntry();
+        numericData.addEntry(data.key(), data.value());
 
-        numericDataRepository.save(newNumericdata);
+        numericDataRepository.save(numericData);
 
         List<NumericDataEntry> AllEntries = numericDataEntryRepository.findAll();
 
