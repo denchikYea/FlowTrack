@@ -33,6 +33,10 @@ public class User {
     @Column(nullable = false, length = 100)
     private String password;
 
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
+
 
     @Builder.Default
     @Column(nullable = false, name = "created_at", updatable = false)

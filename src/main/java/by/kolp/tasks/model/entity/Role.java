@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,5 +25,7 @@ public class Role {
     @Column(nullable = false)
     private RoleName name;
 
+    @OneToMany(mappedBy = "role",cascade = CascadeType.ALL)
+    private List<User> users;
 
 }
