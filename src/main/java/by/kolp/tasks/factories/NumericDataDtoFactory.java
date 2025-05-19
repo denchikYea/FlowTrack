@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 public class NumericDataDtoFactory {
 
-    private NumericDataDTO makeNumericDataDto(NumericDataEntry entry) {
+    public NumericDataDTO makeNumericDataDto(NumericDataEntry entry) {
 
 
         NumericData numericData = entry.getNumericData();

@@ -5,13 +5,11 @@ import by.kolp.tasks.model.entity.Category;
 
 public class CategoryDtoFactory {
 
-    private CategoryDTO makeCategoryDto(Category category) {
+    public CategoryDTO makeCategoryDto(Category category) {
 
         return CategoryDTO.builder()
                 .id(category.getId())
                 .name(category.getName())
                 .build();
-
     }
-
 }
