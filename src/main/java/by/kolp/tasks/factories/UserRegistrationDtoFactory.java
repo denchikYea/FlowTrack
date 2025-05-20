@@ -2,10 +2,15 @@ package by.kolp.tasks.factories;
 
 import by.kolp.tasks.model.dto.UserRegistrationDTO;
 import by.kolp.tasks.model.entity.User;
+import org.springframework.stereotype.Component;
 
+@Component
 public class UserRegistrationDtoFactory {
     public UserRegistrationDTO makeUserRegistrationDto(User user) {
-        return UserRegistrationDTO.builder().username(user.getUsername()).email(user.getEmail()).build();
+        return UserRegistrationDTO.builder()
+                .username(user.getUsername())
+                .email(user.getEmail())
+                .build();
     }
 
     public UserRegistrationDTO makeUserRegistrationDto(String username) {
