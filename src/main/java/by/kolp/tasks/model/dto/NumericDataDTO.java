@@ -1,7 +1,11 @@
 package by.kolp.tasks.model.dto;
 
+import lombok.Builder;
+import lombok.Singular;
+
 import java.util.List;
 
-public record NumericDataDTO(Long id, List<NumericDataEntryDTO> entries) {
+@Builder
+public record NumericDataDTO(Long id, @Singular List<NumericDataEntryDTO> entries) {
 }
 

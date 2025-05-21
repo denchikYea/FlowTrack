@@ -23,7 +23,7 @@ public class CalculateService {
 
         Integer sum = 0;
         NumericData newNumericdata = new NumericData();
-        newNumericdata.addEntry(data.getKey(), data.getValue());
+        newNumericdata.addEntry(data.key(), data.value());
 
         numericDataRepository.save(newNumericdata);
 

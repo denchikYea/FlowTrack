@@ -1,15 +1,13 @@
 package by.kolp.tasks.model.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.Instant;
 
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -33,6 +31,10 @@ public class User {
     @Column(nullable = false, length = 100)
     private String password;
 
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
+
 
     @Builder.Default
     @Column(nullable = false, name = "created_at", updatable = false)
@@ -42,6 +44,10 @@ public class User {
     @Builder.Default
     @Column(nullable = false, name = "updated_at")
     private Instant updatedAt = Instant.now();
+
+    @Builder.Default
+    @Column(nullable = false)
+    private Instant lastLoginAt = Instant.now();
 
 
 }

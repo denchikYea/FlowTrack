@@ -2,12 +2,12 @@ package by.kolp.tasks.model.entity;
 
 import by.kolp.tasks.model.enums.RoleName;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
+import java.util.List;
+
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -23,5 +23,7 @@ public class Role {
     @Column(nullable = false)
     private RoleName name;
 
+    @OneToMany(mappedBy = "role",cascade = CascadeType.ALL)
+    private List<User> users;
 
 }

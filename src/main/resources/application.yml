@@ -4,9 +4,10 @@
   spring:
     datasource:
       driver-class-name: org.postgresql.Driver
-      url: jdbc:postgresql://localhost:5432/flow-track
+      url: jdbc:postgresql://localhost:5432/postgres
       username: postgres
       password: root
+      dialect: org.hibernate.dialect.PostgreSQLDialect
     jpa:
       hibernate:
         ddl-auto: update

@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.time.Instant;
+
 @Slf4j
 @Controller
 @RequestMapping("/calculator")
@@ -19,8 +21,8 @@ public class CalculateServiceController {
     private CalculateService service;
 
 
-    public String showForm(Model model) {
-        model.addAttribute("numericDataEntry", new NumericDataEntryDTO());
+    public String showForm(Model model, String key, Integer value) {
+        model.addAttribute("numericDataEntry", new NumericDataEntryDTO(key,value,Instant.now()));
         return "calculation"; //html
 
     }
