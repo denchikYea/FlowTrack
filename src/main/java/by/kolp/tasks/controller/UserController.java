@@ -33,6 +33,7 @@ public class UserController {
     final UserRegistrationDtoFactory userRegistrationDtoFactory;
 
     public static final String CREATE_USER = "/api/user/create";
+    public static final String FETCH_USER = "/api/user/create";
     public static final String EDIT_USER = "/api/user/{user_id}";
 
 
