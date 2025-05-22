@@ -1,6 +1,6 @@
-package by.kolp.tasks.model.entity;
+package by.kolp.api.model.entity;
 
-import by.kolp.tasks.model.enums.RoleName;
+import by.kolp.api.model.enums.RoleName;
 import jakarta.persistence.*;
 import lombok.*;
 

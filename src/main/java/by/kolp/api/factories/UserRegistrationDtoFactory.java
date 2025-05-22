@@ -1,7 +1,7 @@
-package by.kolp.tasks.factories;
+package by.kolp.api.factories;
 
-import by.kolp.tasks.model.dto.UserRegistrationDTO;
-import by.kolp.tasks.model.entity.User;
+import by.kolp.api.model.dto.UserRegistrationDTO;
+import by.kolp.api.model.entity.User;
 import org.springframework.stereotype.Component;
 
 @Component

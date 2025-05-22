@@ -1,6 +1,6 @@
-package by.kolp.tasks.repository.interfaces;
+package by.kolp.api.repository.interfaces;
 
-import by.kolp.tasks.model.entity.NumericDataEntry;
+import by.kolp.api.model.entity.NumericDataEntry;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

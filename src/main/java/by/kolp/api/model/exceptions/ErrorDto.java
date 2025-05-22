@@ -1,4 +1,4 @@
-package by.kolp.tasks.model.exceptions;
+package by.kolp.api.model.exceptions;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;

@@ -1,7 +1,6 @@
-package by.kolp.tasks.repository.interfaces;
+package by.kolp.api.repository.interfaces;
 
-import by.kolp.tasks.model.dto.AckDTO;
-import by.kolp.tasks.model.entity.User;
+import by.kolp.api.model.entity.User;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;

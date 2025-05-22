@@ -1,10 +1,9 @@
-package by.kolp.tasks.controller;
+package by.kolp.api.controller;
 
-import by.kolp.tasks.model.dto.NumericDataEntryDTO;
-import by.kolp.tasks.service.CalculateService;
+import by.kolp.api.model.dto.NumericDataEntryDTO;
+import by.kolp.api.service.CalculateService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;

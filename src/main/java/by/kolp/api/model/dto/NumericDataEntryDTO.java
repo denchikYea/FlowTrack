@@ -1,4 +1,4 @@
-package by.kolp.tasks.model.dto;
+package by.kolp.api.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;

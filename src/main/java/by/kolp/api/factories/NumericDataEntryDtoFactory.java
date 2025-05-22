@@ -1,7 +1,7 @@
-package by.kolp.tasks.factories;
+package by.kolp.api.factories;
 
-import by.kolp.tasks.model.dto.NumericDataEntryDTO;
-import by.kolp.tasks.model.entity.NumericDataEntry;
+import by.kolp.api.model.dto.NumericDataEntryDTO;
+import by.kolp.api.model.entity.NumericDataEntry;
 
 public class NumericDataEntryDtoFactory {
 

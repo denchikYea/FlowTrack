@@ -1,4 +1,4 @@
-package by.kolp.tasks.model.exceptions;
+package by.kolp.api.model.exceptions;
 
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.AccessLevel;
@@ -42,5 +42,5 @@ public class CustomErrorController implements ErrorController {
                         .errorDescription((String) atrributes.get("message"))
                         .build());
     }
-    //todo .status throws nullpointer exception
+
 }

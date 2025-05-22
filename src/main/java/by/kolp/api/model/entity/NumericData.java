@@ -1,4 +1,4 @@
-package by.kolp.tasks.model.entity;
+package by.kolp.api.model.entity;
 
 import jakarta.persistence.*;
 import lombok.*;

@@ -1,7 +1,7 @@
-package by.kolp.tasks.factories;
+package by.kolp.api.factories;
 
-import by.kolp.tasks.model.dto.CategoryDTO;
-import by.kolp.tasks.model.entity.Category;
+import by.kolp.api.model.dto.CategoryDTO;
+import by.kolp.api.model.entity.Category;
 
 public class CategoryDtoFactory {
 

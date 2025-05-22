@@ -1,10 +1,10 @@
-package by.kolp.tasks.service;
+package by.kolp.api.service;
 
-import by.kolp.tasks.model.dto.NumericDataEntryDTO;
-import by.kolp.tasks.model.entity.NumericDataEntry;
-import by.kolp.tasks.model.entity.NumericData;
-import by.kolp.tasks.repository.interfaces.NumericDataEntryRepository;
-import by.kolp.tasks.repository.interfaces.NumericDataRepository;
+import by.kolp.api.model.dto.NumericDataEntryDTO;
+import by.kolp.api.model.entity.NumericDataEntry;
+import by.kolp.api.model.entity.NumericData;
+import by.kolp.api.repository.interfaces.NumericDataEntryRepository;
+import by.kolp.api.repository.interfaces.NumericDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

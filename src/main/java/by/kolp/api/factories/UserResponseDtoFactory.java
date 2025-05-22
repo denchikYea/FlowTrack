@@ -1,7 +1,7 @@
-package by.kolp.tasks.factories;
+package by.kolp.api.factories;
 
-import by.kolp.tasks.model.dto.UserResponseDTO;
-import by.kolp.tasks.model.entity.User;
+import by.kolp.api.model.dto.UserResponseDTO;
+import by.kolp.api.model.entity.User;
 
 import java.util.List;
 import java.util.stream.Collectors;

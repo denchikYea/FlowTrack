@@ -1,9 +1,9 @@
-package by.kolp.tasks.factories;
+package by.kolp.api.factories;
 
-import by.kolp.tasks.model.dto.NumericDataDTO;
-import by.kolp.tasks.model.dto.NumericDataEntryDTO;
-import by.kolp.tasks.model.entity.NumericData;
-import by.kolp.tasks.model.entity.NumericDataEntry;
+import by.kolp.api.model.dto.NumericDataDTO;
+import by.kolp.api.model.dto.NumericDataEntryDTO;
+import by.kolp.api.model.entity.NumericData;
+import by.kolp.api.model.entity.NumericDataEntry;
 
 import java.util.List;
 import java.util.stream.Collectors;

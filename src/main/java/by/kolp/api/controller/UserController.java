@@ -1,13 +1,13 @@
-package by.kolp.tasks.controller;
+package by.kolp.api.controller;
 
-import by.kolp.tasks.factories.UserRegistrationDtoFactory;
-import by.kolp.tasks.model.dto.AckDTO;
-import by.kolp.tasks.model.dto.UserCreatingRequestDTO;
-import by.kolp.tasks.model.dto.UserRegistrationDTO;
-import by.kolp.tasks.model.entity.User;
-import by.kolp.tasks.model.exceptions.BadRequestException;
-import by.kolp.tasks.model.exceptions.NotFoundException;
-import by.kolp.tasks.repository.interfaces.UserRepository;
+import by.kolp.api.factories.UserRegistrationDtoFactory;
+import by.kolp.api.model.dto.AckDTO;
+import by.kolp.api.model.dto.UserCreatingRequestDTO;
+import by.kolp.api.model.dto.UserRegistrationDTO;
+import by.kolp.api.model.entity.User;
+import by.kolp.api.model.exceptions.BadRequestException;
+import by.kolp.api.model.exceptions.NotFoundException;
+import by.kolp.api.repository.interfaces.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
