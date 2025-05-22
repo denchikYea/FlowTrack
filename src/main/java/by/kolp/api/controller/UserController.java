@@ -31,26 +31,53 @@ public class UserController {
 
     final UserRepository userRepository;
 
-
     final UserRegistrationDtoFactory userRegistrationDtoFactory;
 
-    public static final String CREATE_USER = "/api/user";
-    public static final String EDIT_USER = "/api/user/{user_id}";
     public static final String FETCH_USERS = "/api/user";
     public static final String DELETE_USER = "/api/user/{user_id}";
+    public static final String CREATE_OR_UPDATE_USER = "/api/user";
 
+    @PutMapping(CREATE_OR_UPDATE_USER)
+    public UserRegistrationDTO createOrUpdateUser(@RequestParam(value = "user_id",required = false) Optional<Long> optionalUserId,
+                                                  @RequestParam(value = "user_name",required = false) Optional<String> optionalUserName)
+    {
+        User user = optionalUserId
+                .map(this::getUserOrThrowException)
+                .orElseGet(() -> User.builder().build());
+
+        if(!optionalUserId.isPresent() && !optionalUserName.isPresent()) {
+            throw new BadRequestException("Username cannot be empty!");
+        }
+
+        userRepository.findByUsername(user.getUsername())
+                .filter(anotherUser -> !Objects.equals(anotherUser.getId(), optionalUserId))
+                .ifPresent(anotherUser -> {
+                    throw new BadRequestException(String.format("User \"%s\" already exists.", optionalUserName));
+                });
+
+        user.setUsername(user.getUsername());
+
+        final User saveUser = userRepository.saveAndFlush(user);
+
+        return userRegistrationDtoFactory.makeUserRegistrationDto(saveUser);
+    }
 
     @DeleteMapping(value = DELETE_USER)
     public AckDTO deleteUser(@PathVariable("user_id") Long userId) {
+        User user = getUserOrThrowException(userId);
+
+
+        userRepository.deleteUserBy(user.getId());
+        return new AckDTO("User successfully deleted", true);
+    }
+
+    private User getUserOrThrowException(Long userId) {
         User user = userRepository
                 .findById(userId)
                 .orElseThrow(() ->
                         new NotFoundException(String
                                 .format("User \"%s%\" doesn't exist", userId)));
-
-
-        userRepository.deleteUserBy(user.getId());
-        return new AckDTO("User successfully deleted", true);
+        return user;
     }
 
     @GetMapping(FETCH_USERS)
@@ -69,58 +96,4 @@ public class UserController {
                 .collect(Collectors.toList());
     }
 
-
-    @PostMapping(CREATE_USER)
-    public UserRegistrationDTO register(@RequestBody UserCreatingRequestDTO request) {
-
-        if (request.getUsername().trim().isEmpty() || request.getPassword().trim().isEmpty()) {
-            throw new BadRequestException("Username or password cannot be empty");
-        }
-
-        userRepository
-                .findByUsername(request.getUsername())
-                .ifPresent(
-                        user -> {
-                            throw new BadRequestException(String.format("User \"%s\" already exists.", request.getUsername()));
-                        });
-
-        User newUser = userRepository.saveAndFlush(
-                User.builder()
-                        .username(request.getUsername())
-                        .email(request.getEmail())
-                        .password(request.getPassword())
-                        .build()
-        );
-
-        return userRegistrationDtoFactory.makeUserRegistrationDto(newUser);
-    }
-
-    @PatchMapping(EDIT_USER)
-    public UserRegistrationDTO editUsername(@PathVariable("user_id") Long userId,
-                                            @RequestBody UserCreatingRequestDTO request) {
-
-
-        if (request.getUsername().trim().isEmpty()) {
-            throw new BadRequestException("Username cannot be empty");
-        }
-
-        User user = userRepository
-                .findById(userId)
-                .orElseThrow(() ->
-                        new NotFoundException(String
-                                .format("User \"%s%\" doesn't exist", userId)));
-
-        userRepository.findByUsername(user.getUsername())
-                .filter(anotherUser -> !Objects.equals(anotherUser.getId(), userId))
-                .ifPresent(anotherUser -> {
-                    throw new BadRequestException(String.format("User \"%s\" already exists.", request.getUsername()));
-
-
-                });
-
-
-        user.setUsername(request.getUsername());
-        user = userRepository.saveAndFlush(user);
-        return userRegistrationDtoFactory.makeUserRegistrationDto(user);
-    }
 }
